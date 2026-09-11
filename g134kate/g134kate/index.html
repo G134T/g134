@@ -3,37 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          content="G134 Kate — независимый сторонний клиент ВКонтакте для Android.">
+    <meta name="theme-color" content="#0b0d10">
+    <meta name="description" content="G134 Kate — независимый сторонний клиент ВКонтакте для Android, создаваемый с нуля.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="G134 Kate — клиент ВКонтакте для Android">
+    <meta property="og:description" content="Независимый Android-клиент с авторизацией через официальный VK ID.">
+
     <title>G134 Kate — клиент ВКонтакте для Android</title>
 
     <style>
+        :root {
+            color-scheme: dark;
+            --background: #0b0d10;
+            --surface: #14171c;
+            --surface-light: #1a1e25;
+            --border: #292f39;
+            --text: #f3f5f7;
+            --text-secondary: #aab2bf;
+            --accent: #5b9ee6;
+            --accent-hover: #73b1f2;
+            --success: #65c886;
+            --warning: #e6ba5b;
+            --testing: #a48be8;
+            --radius: 20px;
+        }
+
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            background: #0a0a0a;
-            color: #e8e8e8;
-            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at 50% -20%, rgba(91, 158, 230, 0.24), transparent 38rem),
+                var(--background);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
         }
 
-        header, main, footer {
-            width: min(900px, calc(100% - 32px));
-            margin: auto;
+        a {
+            color: var(--accent);
         }
 
-        header {
-            padding: 60px 0 30px;
+        a:focus-visible,
+        .button:focus-visible {
+            outline: 3px solid rgba(91, 158, 230, 0.55);
+            outline-offset: 3px;
+        }
+
+        .container {
+            width: min(960px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 13, 16, 0.88);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 64px;
+            gap: 20px;
+        }
+
+        .brand {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .topbar-link {
+            color: var(--text-secondary);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .topbar-link:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 72px 0 44px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .app-icon {
+            display: grid;
+            width: 124px;
+            height: 124px;
+            place-items: center;
+            background: linear-gradient(145deg, #71a9d9, #83d8ce);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 34px;
+            box-shadow: 0 20px 55px rgba(36, 112, 169, 0.3);
+            color: rgba(255, 255, 255, 0.94);
+            font-size: 64px;
+            font-weight: 800;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            padding: 5px 11px;
+            background: rgba(230, 186, 91, 0.12);
+            border: 1px solid rgba(230, 186, 91, 0.3);
+            border-radius: 999px;
+            color: var(--warning);
+            font-size: 13px;
+            font-weight: 700;
         }
 
         h1 {
-            margin-bottom: 8px;
-            font-size: 42px;
+            margin: 0;
+            font-size: clamp(42px, 7vw, 68px);
+            line-height: 1.06;
+            letter-spacing: -0.04em;
         }
 
+        .lead {
+            max-width: 680px;
+            margin: 14px 0 0;
+            color: var(--text-secondary);
+            font-size: clamp(17px, 2.5vw, 21px);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .button-primary {
+            background: var(--accent);
+            border-color: transparent;
+            color: #07121e;
+        }
+
+        .button-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        section {
+            padding: 26px 0;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+            font-size: clamp(26px, 4vw, 34px);
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            max-width: 760px;
+            margin: -4px 0 20px;
+            color: var(--text-secondary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            padding: 22px;
+            background: linear-gradient(145deg, var(--surface-light), var(--surface));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .feature-status {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .status-ready {
+            color: var(--success);
+        }
+
+        .status-testing {
+            color: var(--testing);
+        }
+
+        .status-planned {
+            color: var(--warning);
+        }
+
+        .wide-card {
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .wide-card p {
+            margin: 0 0 12px;
+        }
+
+        .wide-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .document-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .document-link {
+            display: block;
+            padding: 17px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            color: var(--text);
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        .document-link:hover {
+            border-color: var(--accent);
+        }
+
+        footer {
+            margin-top: 34px;
+            padding: 30px 0 44px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 0 0 10px;
+        }
+
+        @media (max-width: 680px) {
+            .hero {
+                padding-top: 44px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .app-icon {
+                width: 96px;
+                height: 96px;
+                border-radius: 28px;
+                font-size: 50px;
+            }
+
+            .grid,
+            .document-list {
+                grid-template-columns: 1fr;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .topbar-link {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="./" aria-label="Главная страница G134 Kate">G134 Kate</a>
+            <a class="topbar-link" href="../">Основной сайт G134</a>
+        </div>
+    </div>
+
+    <header class="hero container">
+        <div class="hero-grid">
+            <div class="app-icon" aria-hidden="true">G</div>
+
+            <div>
+                <div class="eyebrow">● Закрытое тестирование</div>
+                <h1>G134 Kate</h1>
+                <p class="lead">
+                    Независимый сторонний клиент ВКонтакте для Android,
+                    который создаётся с нуля одним энтузиастом.
+                </p>
+
+                <div class="actions">
+                    <a class="button button-primary"
+                       href="https://vk.ru/g134kate"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Сообщество проекта
+                    </a>
+                    <a class="button button-secondary" href="privacy.html">
+                        Политика конфиденциальности
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section aria-labelledby="about-title">
+            <h2 id="about-title">О приложении</h2>
+            <div class="wide-card">
+                <p>
+                    G134 Kate разрабатывается для Android 10–16. Проект не является
+                    форком или модификацией Kate Mobile и использует собственную кодовую базу.
+                </p>
+                <p>
+                    Вход выполняется через официальный VK ID. G134 Kate не запрашивает
+                    и не получает пароль пользователя: авторизация проходит на стороне ВКонтакте.
+                </p>
+                <p>
+                    Доступность отдельных возможностей зависит от документированных методов,
+                    разрешений и действующих ограничений VK API.
+                </p>
+            </div>
+        </section>
+
+        <section aria-labelledby="features-title">
+            <h2 id="features-title">Возможности</h2>
+            <p class="section-description">
+                Статусы показывают текущее состояние разработки и не обещают доступ
+                к функциям, для которых ещё требуется разрешение ВКонтакте.
+            </p>
+
+            <div class="grid">
+                <article class="card">
+                    <span class="feature-status status-testing">● Тестируется</span>
+                    <h3>Профиль пользователя</h3>
+                    <p>Основная информация профиля и разделы аккаунта.</p>
+                </article>
+
+                <article class="card">
+                    <span class="feature-status status-testing">● Тестируется</span>
+                    <h3>Фотографии и видео</h3>
+                    <p>Просмотр доступных пользователю медиаматериалов.</p>
+                </article>
+
+                <article class="card">
+                    <span class="feature-status status-planned">● Планируется</span>
+                    <h3>Несколько аккаунтов</h3>
+                    <p>Переключение между отдельно авторизованными аккаунтами.</p>
+                </article>
+
+                <article class="card">
+                    <span class="feature-status status-planned">● Планируется</span>
+                    <h3>Виджет новостей</h3>
+                    <p>Светлое и тёмное оформление для главного экрана Android.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="security-title">
+            <h2 id="security-title">Авторизация и безопасность</h2>
+            <div class="wide-card">
+                <p>Авторизация пользователя выполняется через официальный сервис VK ID.</p>
+                <p>Приложение запрашивает только разрешения, необходимые для выбранных функций.</p>
+                <p>Выйти из аккаунта и удалить локальные данные можно в настройках приложения.</p>
+            </div>
+        </section>
+
+        <section aria-labelledby="documents-title">
+            <h2 id="documents-title">Документы и поддержка</h2>
+            <div class="document-list">
+                <a class="document-link" href="privacy.html">Политика конфиденциальности →</a>
+                <a class="document-link" href="terms.html">Пользовательское соглашение →</a>
+                <a class="document-link" href="delete-data.html">Удаление данных →</a>
+                <a class="document-link" href="support.html">Поддержка →</a>
+            </div>
+        </section>
+
+        <section aria-labelledby="release-title">
+            <h2 id="release-title">Где скачать?</h2>
+            <div class="wide-card">
+                <p>
+                    Публичная версия пока недоступна. Информация о закрытом тестировании
+                    и будущих выпусках публикуется в сообществе G134 Kate.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                G134 Kate является независимым сторонним приложением и не связано
+                с ООО «В Контакте», официальным приложением ВКонтакте или разработчиками Kate Mobile.
+            </p>
+            <p>© 2026 G134 Kate</p>
+        </div>
+    </footer>
+</body>
+</html>
         h2 {
             margin-top: 40px;
             color: #71aef2;
