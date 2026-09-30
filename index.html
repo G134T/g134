@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>G134 — музыкант, дизайнер, разработчик</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 0 0 3rem 0;
+        }
+
+        /* Верхний тулбар */
+        .toolbar {
+            background-color: #0f0f0f;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .toolbar h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+        }
+
+        /* Основной контент */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.8rem 1.5rem;
+        }
+
+        /* Блоки */
+        .block {
+            margin-bottom: 2.5rem;
+        }
+
+        .block h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            border-left: 4px solid #2a6f8f;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+        }
+
+        .block p {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Ссылки-кнопки */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .link-btn {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #ddd;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .link-btn:hover {
+            background-color: #2a2a2a;
+            border-color: #2a6f8f;
+            color: white;
+        }
+
+        /* Карточки друзей */
+        .friend-card {
+            background-color: #121212;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid #262626;
+        }
+
+        .friend-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .friend-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 0.7rem;
+        }
+
+        .friend-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #252525;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхний тулбар -->
+    <div class="toolbar">
+        <h1>G134</h1>
+    </div>
+
+    <div class="container">
+
+        <!-- Описание -->
+        <div class="block">
+            <h2>Обо мне</h2>
+            <p><strong>G134</strong> (настоящее имя — Новиков Анатолий Андреевич). Родился в х. Зимовский, Фроловский район, Волгоградская область. Свой творческий путь начал в 2016 году с приложения RapFame. Помимо музыки, увлекаюсь фотошопом, баскетболом, кикбоксингом.</p>
+            <p>С 2022 по 2023 год отслужил в армии в рядах ВМФ (Морская авиация).</p>
+            <p>Первые треки выкладывал в VK, позже — на FreshTunes вместе со своими товарищами по «кухне» и лучшими друзьями BlankDaze и GOMON. Мы также ведём творческое объединение OOO ZAVOD.</p>
+            <p>Помимо музыки, я разрабатываю приложения. Мой проект <strong>G134 Ultimate Studio</strong> — программа для равномерной нарезки видео на кадры с поддержкой аппаратного ускорения на AMD. Сейчас работаю над <strong>G134Kate</strong> — альтернативным клиентом VK с гибкими настройками и встроенным ИИ-помощником.</p>
+        </div>
+
+        <!-- Мои соцсети и площадки -->
+        <div class="block">
+            <h2>Мои соцсети и площадки</h2>
+            <div class="links-grid">
+                <a href="https://vk.com/club186435644" class="link-btn">VK группа G134</a>
+                <a href="https://vk.com/club234589563" class="link-btn">Bad Rock Classic</a>
+                <a href="https://vk.com/club233990999" class="link-btn">Screencaps</a>
+                <a href="https://t.me/g134tn" class="link-btn">Telegram</a>
+                <a href="https://music.yandex.ru/artist/19870414" class="link-btn">Яндекс.Музыка</a>
+                <a href="https://vk.ru/artist/1856493826734233857" class="link-btn">VK Музыка</a>
+                <a href="https://www.tiktok.com/@g134t" class="link-btn">TikTok</a>
+                <a href="https://youtube.com/@g134tn" class="link-btn">YouTube</a>
+            </div>
+        </div>
+
+        <!-- Друзья и творческое объединение -->
+        <div class="block">
+            <h2>Друзья и творческое объединение</h2>
+
+            <div class="friend-card">
+                <div class="friend-name">BlankDaze</div>
+                <div class="friend-desc">Настоящее имя — Турукин Антон Александрович. Родился в г. Михайловка, Михайловский район, Волгоградская область. Свой творческий путь начал в 2023 году, аналогично G134. Помимо музыки, обожает аниме, любит шумные гулянки и просто является хорошим человеком.</div>
+                <div class="friend-links">
+                    <a href="https://t.me/blankdazel" class="link-btn">Telegram</a>
+                    <a href="https://www.tiktok.com/@blankdaze1" class="link-btn">TikTok</a>
+                    <a href="https://www.tiktok.com/@blankdazel" class="link-btn">TikTok (второй)</a>
+                </div>
+            </div>
+
+            <div class="friend-card">
+                <div class="friend-name">GOMON</div>
+                <div class="friend-desc">Настоящее имя — Гомонов Дмитрий Александрович. Родился в г. Полярный Мурманской области. Творческий путь начал в 2023 году. Ранее вёл свой TikTok, где набрал огромное количество просмотров. Душа компании, классно пишет стихи и тексты, грамотный и умный джентльмен.</div>
+                <div class="friend-links">
+                    <a href="https://www.tiktok.com/@gomazyan" class="link-btn">TikTok</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 0.8rem;">
+                <a href="https://vk.com/club221742453" class="link-btn">Творческое объединение OOO ZAVOD (VK)</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer">
+            G134 — музыка, фотошоп, разработка
+        </div>
+
+    </div>
+
+</body>
+</html>
