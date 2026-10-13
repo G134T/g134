@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>G134 — музыка, дизайн, разработка</title>
-    <meta name="description" content="G134 (Новиков Анатолий) — музыка, дизайн и разработка. G134Kate, G134 Ultimate Studio и творческое объединение OOO ZAVOD.">
+    <meta name="description" content="G134Kate — клиент ВКонтакте для Android. Что это за проект, группа VK и остальные дела G134.">
     <meta name="theme-color" content="#0e0f12">
     <link rel="canonical" href="https://g134.ru/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta property="og:title" content="G134">
-    <meta property="og:description" content="Музыка, дизайн и разработка. Новиков Анатолий.">
+    <meta property="og:description" content="G134Kate — клиент ВКонтакте для Android. Описание проекта и группа VK.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://g134.ru/">
     <meta property="og:locale" content="ru_RU">
@@ -192,6 +192,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             margin: 0;
+            border-top: 1px solid var(--line);
         }
 
         .places a {
@@ -199,11 +200,32 @@
             justify-content: space-between;
             gap: 16px;
             padding: 16px 0;
-            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
             text-decoration: none;
         }
 
-        .places a:nth-last-child(-n + 2) { border-bottom: 1px solid var(--line); }
+        .facts { margin: 8px 0 0; }
+
+        .facts div {
+            display: grid;
+            grid-template-columns: 9.5rem 1fr;
+            gap: 12px;
+            padding: 12px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .facts div:last-child { border-bottom: 1px solid var(--line); }
+
+        .facts dt { margin: 0; color: var(--faint); }
+
+        .facts dd { margin: 0; }
+
+        .go {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--steel);
+            font-weight: 600;
+        }
 
         .places a:hover small,
         .places a:hover strong { color: var(--steel); }
@@ -251,8 +273,7 @@
                 border-left: 0;
                 border-top: 1px solid var(--line);
             }
-            .places a:nth-last-child(-n + 2) { border-bottom: 0; }
-            .places a:last-child { border-bottom: 1px solid var(--line); }
+            .facts div { grid-template-columns: 1fr; gap: 2px; }
             .people article + article { margin-top: 28px; }
             h1 { font-size: 4.4rem; }
         }
@@ -268,8 +289,9 @@
         <header class="top">
             <a class="brand" href="#content"><b>G134</b><span>g134.ru</span></a>
             <nav class="nav" aria-label="Разделы">
+                <a href="#kate">G134Kate</a>
                 <a href="#about">Обо мне</a>
-                <a href="#work">Проекты</a>
+                <a href="#work">Ещё</a>
                 <a href="#places">Площадки</a>
                 <a href="#people">Люди</a>
             </nav>
@@ -294,6 +316,21 @@
                 </article>
             </div>
 
+            <section id="kate">
+                <p class="kicker">Проект</p>
+                <h2>Что такое G134Kate</h2>
+                <p>G134Kate — приложение для Android и свой клиент ВКонтакте. Оно нужно, чтобы читать ленту, переписываться, смотреть друзей и группы, фото, видео и слушать музыку не в официальном приложении. Можно держать несколько учётных записей и менять оформление. Внешний вид опирается на Kate Mobile Fork.</p>
+                <p>Проект ещё собирается. Готовой сборки на этом сайте нет: страница объясняет, что это, и ведёт в группу, где о приложении пишут.</p>
+                <dl class="facts">
+                    <div><dt>Платформа</dt><dd>Android</dd></div>
+                    <div><dt>Что внутри</dt><dd>Новости, сообщения, профиль, друзья, группы, фото, видео, музыка, настройки</dd></div>
+                    <div><dt>Вход</dt><dd>Обычный вход и вход по QR-коду со снимка</dd></div>
+                    <div><dt>Оформление</dt><dd>На основе Kate Mobile Fork, со своими темами</dd></div>
+                    <div><dt>Исходники</dt><dd>В этом репозитории их нет. Здесь только страница проекта.</dd></div>
+                </dl>
+                <a class="go" href="https://vk.ru/g134kate">Группа G134Kate во ВКонтакте</a>
+            </section>
+
             <section class="bio" id="about">
                 <h2>Обо мне</h2>
                 <p><strong>G134</strong> — это не просто псевдоним, а творческое пространство: музыка, визуальное искусство и программирование соединены в одном проекте.</p>
@@ -308,10 +345,10 @@
                     <div class="num">01</div>
                     <div>
                         <h3>G134Kate</h3>
-                        <p>Альтернативный клиент VK с гибкими настройками и встроенным ИИ-помощником. Сейчас в работе. Исходники приложения в этом репозитории не лежат.</p>
+                        <p>Клиент ВКонтакте для Android. Что это и зачем — в разделе выше.</p>
                         <div class="more">
-                            <a href="https://vk.ru/g134kate">Сообщество в VK</a>
-                            <a href="https://github.com/G134T/g134">Эта страница на GitHub</a>
+                            <a href="#kate">О проекте</a>
+                            <a href="https://vk.ru/g134kate">Группа во ВКонтакте</a>
                         </div>
                     </div>
                 </article>
@@ -335,6 +372,7 @@
             <section id="places">
                 <h2>Площадки</h2>
                 <div class="places">
+                    <a href="https://vk.ru/g134kate"><strong>Группа G134Kate</strong><small>vk.ru/g134kate</small></a>
                     <a href="https://vk.com/club186435644"><strong>VK группа G134</strong><small>vk.com</small></a>
                     <a href="https://vk.com/club234589563"><strong>Bad Rock Classic</strong><small>vk.com</small></a>
                     <a href="https://vk.com/club233990999"><strong>Screencaps</strong><small>vk.com</small></a>
